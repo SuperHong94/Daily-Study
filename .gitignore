@@ -1,0 +1,46 @@
+﻿
+# Created by https://www.gitignore.io/api/c++
+# Edit at https://www.gitignore.io/?templates=c++
+
+### C++ ###
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# End of https://www.gitignore.io/api/c++
+*.db
+*.sln
+*.opendb
+*.filters
+*.vcxproj
+*.user
+19년/10월/10월 11일/레드블랙 트리 다시도전!/.vs/레드블랙 트리 다시도전!/v15/.suo
