@@ -22,7 +22,7 @@ int main()
 		Insert(root,v[i]);
 		insert_case1(root);
 		PrintNode(root);
-
 	}
+	std::cout << "왜 안되니?";
 
 }
