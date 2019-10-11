@@ -386,23 +386,3 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/c++,visualstudio
-
-*.db
-*.sln
-*.opendb
-*.filters
-*.vcxproj
-
-*.suo
-*.ipch
-*.lik
-*.ilk
-*.pdb
-*.tlog
-*.log
-*.idb
-*.enc
-*.user
-*.db
-*.db
-*.exe
