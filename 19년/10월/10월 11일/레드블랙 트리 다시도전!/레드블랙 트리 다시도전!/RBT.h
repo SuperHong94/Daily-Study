@@ -8,7 +8,6 @@ struct Node {
 	enum color_t color;
 	int key;
 };
-static void MakeNode(Node*& node, int key);
 Node* GetParent(Node* n);
 Node* GetGrandParent(Node* n);
 Node* GetSibling(Node* n);

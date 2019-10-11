@@ -34,9 +34,6 @@ int main()
 		}
 		else
 			MakeList(v[i - 1])->next = MakeList(v[i]);
-		std::cout << MakeList(v[i - 1])->next << "dddd'\n";
-		//if (i == (v.size() - 1))
-			//std::cout<<root->next;
 	}
 	std::cout << root->next->next;
 	PrintAll(root);

@@ -42,15 +42,17 @@
 *.opendb
 *.filters
 *.vcxproj
-*.user
-19년/10월/10월 11일/레드블랙 트리 다시도전!/.vs/레드블랙 트리 다시도전!/v15/.suo
-*.lastbuildstate
-19년/10월/10월 11일/레드블랙 트리 다시도전!/레드블랙 트리 다시도전!/Debug/레드블랙 트리 다시도전!.tlog/unsuccessfulbuild
+
+*.suo
+*.ipch
+*.lik
+*.ilk
+*.pdb
 *.tlog
 *.log
-*.pdb
 *.idb
-*.ipch
 *.enc
-*.ilk
-19년/10월/10월 11일/static funtion 연습/.vs/static funtion 연습/v15/.suo
+*.user
+*.db
+*.db
+*.exe

@@ -151,7 +151,6 @@ void Insert(Node*& node, int data)
 	}
 	else {
 		if (node->data >= data) {
-
 			Insert(node->left, data);
 			node->left->parent = node;
 	
