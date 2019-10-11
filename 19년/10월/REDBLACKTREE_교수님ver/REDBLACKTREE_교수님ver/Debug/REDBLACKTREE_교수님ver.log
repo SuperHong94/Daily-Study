@@ -1,0 +1,4 @@
+﻿  treePrint.c
+c:\users\홍순조\source\repos\매일 공부\19년\10월\redblacktree_교수님ver\redblacktree_교수님ver\treeprint.c(175): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 'sprintf' 선언을 참조하십시오.
+  REDBLACKTREE_교수님ver.vcxproj -> C:\Users\홍순조\source\repos\매일 공부\19년\10월\REDBLACKTREE_교수님ver\Debug\REDBLACKTREE_교수님ver.exe
