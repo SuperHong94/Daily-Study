@@ -1,2 +1,7 @@
 ﻿  tree.cpp
-  진짜 마지막이다! 레블트리 인서트!.vcxproj -> C:\Users\홍순조\source\repos\매일 공부\19년\10월\10월10일\진짜 마지막이다! 레블트리 인서트!\Debug\진짜 마지막이다! 레블트리 인서트!.exe
+  소스.cpp
+c:\users\홍순조\source\repos\daily-study\19년\10월\10월10일\진짜 마지막이다! 레블트리 인서트!\진짜 마지막이다! 레블트리 인서트!\소스.cpp(20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\홍순조\source\repos\daily-study\19년\10월\10월10일\진짜 마지막이다! 레블트리 인서트!\진짜 마지막이다! 레블트리 인서트!\소스.cpp(21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다...
+  LINK : C:\Users\홍순조\source\repos\Daily-Study\19년\10월\10월10일\진짜 마지막이다! 레블트리 인서트!\Debug\진짜 마지막이다! 레블트리 인서트!.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+  진짜 마지막이다! 레블트리 인서트!.vcxproj -> C:\Users\홍순조\source\repos\Daily-Study\19년\10월\10월10일\진짜 마지막이다! 레블트리 인서트!\Debug\진짜 마지막이다! 레블트리 인서트!.exe
