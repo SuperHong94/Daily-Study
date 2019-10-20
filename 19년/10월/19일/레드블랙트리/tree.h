@@ -3,9 +3,9 @@
 #define RED 1
 struct Node {
 	int data;
-	Node* left;
-	Node* right;
-	Node* parents;
+	Node* left=NULL;
+	Node* right=NULL;
+	Node* parents=NULL;
 	int color=BLACK;
 };
 
