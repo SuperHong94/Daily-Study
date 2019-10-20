@@ -5,8 +5,8 @@
 int main()
 {
 	NIL = new Node;
-	NIL->left = NULL;
-	NIL->right = NULL;
+	NIL->left = nullptr;
+	NIL->right = nullptr;
 	
 	
 	std::default_random_engine dre;
@@ -19,8 +19,8 @@ int main()
 	//루트만들기
 	ROOT = new Node;
 	ROOT->data = v[0];
-	ROOT->left = ROOT->right = NIL;
-	ROOT->parents = NULL;
+	ROOT->left = ROOT->right = nullptr;
+	ROOT->parents = nullptr;
 	//------------------
 	for (int i = 0; i < v.size(); i++) std::cout << v[i] << '\t';
 	printf("'\n");

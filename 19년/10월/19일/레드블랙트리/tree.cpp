@@ -5,7 +5,7 @@ Node* ROOT;
 void Insert(Node*& node, int data)
 {
 
-	if (node == NULL || node == NIL)
+	if (node == nullptr || node == NIL)
 	{
 
 
@@ -13,22 +13,23 @@ void Insert(Node*& node, int data)
 		newNode->left = newNode->right = NIL;
 		newNode->color = RED;
 		newNode->data = data;
-		newNode->parents = node->parents;
+		//newNode->parents = node->parents;
 		node = newNode;
 		//어떻게하면 여기서 node의 parents를 넣을수 있을까?;
 		TreeRepair(node);
 	}
 	else {
 		if (node->data < data) {
-
-			node->right->parents = node;
+			if (node->right != nullptr)
+				node->right->parents = node;
 			Insert(node->right, data);
 
 
 		}
 		else
 		{
-			node->left->parents = node;
+			if (node->left != nullptr)
+				node->left->parents = node;
 			Insert(node->left, data);
 
 
@@ -36,7 +37,7 @@ void Insert(Node*& node, int data)
 	}
 }
 void PrintTree(Node* node) {
-	if (node == NULL || node == NIL)
+	if (node == nullptr || node == NIL)
 		return;
 	else {
 		std::cout << "자기주소: " << node << "부모주소: " << node->parents << "데이터: " << node->data;
@@ -49,7 +50,7 @@ void PrintTree(Node* node) {
 }
 Node* GetParents(Node* node)
 {
-	return node == NULL ? NULL : node->parents;
+	return node == nullptr ? nullptr : node->parents;
 }
 
 Node* GetGrandparents(Node* node)
@@ -66,8 +67,8 @@ Node* GetUncle(Node* node)
 Node* GetSibling(Node* node)
 {
 	Node* p = GetParents(node);
-	if (p == NULL)
-		return NULL;
+	if (p == nullptr)
+		return nullptr;
 	if (node == p->left)return p->left;
 	else p->right;
 }
@@ -77,7 +78,7 @@ Node* GetSibling(Node* node)
 void InsertCase1(Node* node)
 {
 	//std::cout << "node's parents" << node->parents << '\n';
-	if (node->parents == NULL)
+	if (node->parents == nullptr)
 		node->color = BLACK;
 }
 void InsertCase2(Node* node)
@@ -116,13 +117,13 @@ void InsertCase4(Node* node)
 
 void TreeRepair(Node* node)
 {
-	if (GetParents(node) == NULL)
+	if (GetParents(node) == nullptr)
 		InsertCase1(node);
 	else if (GetParents(node)->color == BLACK)
 		InsertCase2(node);
-	else if (GetUncle(node) != NULL && GetUncle(node)->color == RED)
+	else if (GetUncle(node) != nullptr && GetUncle(node)->color == RED)
 		InsertCase3(node);
-	else if (GetUncle(node) != NULL && GetUncle(node)->color == BLACK)
+	else if (GetUncle(node) != nullptr && GetUncle(node)->color == BLACK)
 		InsertCase4(node);
 }
 
@@ -135,9 +136,9 @@ void LeftRotate(Node* node)
 	node->right = Right->left;
 	Right->left = node;
 	node->parents = Right;
-	if (node->right != NULL && node->right != NIL)
+	if (node->right != nullptr && node->right != NIL)
 		node->right->parents = node;
-	if (p != NULL) {
+	if (p != nullptr) {
 		if (node == p->left) {
 			p->left = Right;
 		}
@@ -151,7 +152,7 @@ void LeftRotate(Node* node)
 }
 
 void RightRotate(Node* node)
-{							
+{
 	std::cout << "오른쪽회전" << std::endl;//대칭
 	Node*p = GetParents(node); //Node*p = GetParents(node);
 	Node* Left = node->left;  //Node* Right = node->right;
@@ -159,9 +160,9 @@ void RightRotate(Node* node)
 	Left->right = node;  //Right->left = node;
 	node->parents = Left;
 
-	if (node->right != NULL && node->right != NIL)
+	if (node->right != nullptr && node->right != NIL)
 		node->left->parents = node; //Right->left->parents = node;
-	if (p != NULL) {
+	if (p != nullptr) {
 		if (node == p->left)
 			p->left == Left;
 		else if (node == p->right)
