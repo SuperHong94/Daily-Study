@@ -12,7 +12,7 @@ int main()
 		copy[i] = A[i];
 	}
 	for (int d : A) std::cout << d << std::endl;
-	MergeSort(A,copy, 0, 9);
+	MergeSort(A, 0, 9);
 	std::cout << "----------------" << std::endl;
 	//for (int i = 0; i < SIZE; i++) A[i] = copy[i];
 	for (int d : A) std::cout << d << std::endl;
