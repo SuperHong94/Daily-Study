@@ -24,4 +24,5 @@
 \Release
 *.iobj
 *.ipdb
-
+*.vs
+*.tlog
