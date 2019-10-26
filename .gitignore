@@ -25,3 +25,4 @@
 *.iobj
 *.ipdb
 *.vs
+*.tlog
