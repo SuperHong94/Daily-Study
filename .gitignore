@@ -25,3 +25,8 @@
 *.iobj
 *.ipdb
 
+*.sln
+*.vcxproj
+*.filters
+*.lastbuildstate
+*.tlog
