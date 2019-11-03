@@ -60,7 +60,7 @@ void InitBuffer()
 {
 	const float vertexData[] = {
 		0.5, 1.0, 0.0,	 1.0, 0.0, 0.0,
-		0.0, 0.0, 0.0,	 0.0, 1.0, 0.0, 
+		0.0, 0.0, 0.0,	 0.0, 1.0, 0.0,
 		1.0, 0.0, 0.0,	 0.0, 0.0, 1.0 };
 
 	GLuint vertexOBJ;
@@ -89,4 +89,111 @@ void InitBuffer()
 
 
 	glEnableVertexAttribArray(1);
+}
+
+
+void CreateCone()
+{
+	GLfloat vertex[] = {
+		0.0f, 1.0f, 0.0f,	1.0f, 0.0f, 0.0f,
+		-0.5f, -0.5f, 0.5f,	0.0f, 1.0f, 0.0f,
+		0.5f, -0.5f, 0.5f,	0.0f, 0.0f, 1.0f,
+
+		-0.5f, -0.5f, -0.5f,	1.0f, 0.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f,	0.0f, 0.5f, 1.0f,
+		0.5f, -0.5f, -0.5f,	0.5f, 0.5f, 1.0f
+	};
+	
+	GLuint VBO;
+	glGenBuffers(1, &VBO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
+
+	GLint gIndices[]
+	{
+		1,3,2,
+		2,3,4,
+
+		0,1,2,
+		0,3,1,
+
+		0,3,4,
+		0,2,4,
+
+	};
+
+	GLuint EBO;
+	glGenBuffers(1, &EBO);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(gIndices), &gIndices, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));//3번째 인자는 다음꺼까지 얼마나 떨어질까, 맨뒤에 인자는 어디서 시작할까 x,y,z,r,g,b,니깐  3번쨰부터시작해서 6칸떨어져야 다음시작위치
+
+
+	glEnableVertexAttribArray(1);
+
+
+}
+void CreateCube()
+{
+
+	GLfloat vertex[] = {
+		-0.5f, 0.5f, 0.5f,	1.0f, 0.0f, 0.0f,
+		-0.5f, -0.5f, 0.5f,	0.5f, 0.5f, 0.0f,
+		0.5f, 0.5f, 0.5f,	0.0f, 1.0f, 0.0f,
+
+		0.5f, -0.5f, 0.5f,	0.0f, 1.0f, 0.5f,
+		-0.5f, -0.5f, -0.5f,	0.0f, 0.5f, 1.0f,
+		-0.5f, 0.5f, -0.5f,	1.0f, 0.0f, 1.0f,
+
+		0.5f, 0.5f, -0.5f,	0.0f, 0.5f, 0.0f,
+		0.5f, -0.5f, -0.5f,	1.0f, 1.0f, 0.1f
+	};
+
+	GLuint VBO;
+	glGenBuffers(1, &VBO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
+
+	//front
+	GLint gIndices[]
+	{
+		0,1,2,
+		2,1,3,
+
+		0,5,4,
+		0,4,1,
+
+		5,6,7,
+		5,7,4,
+
+		2,6,7,
+		2,7,3,
+
+		0,2,5,
+		2,6,5,
+
+		1,4,7,
+		1,7,3
+	};
+
+	GLuint EBO;
+	glGenBuffers(1, &EBO);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(gIndices), &gIndices, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));//3번째 인자는 다음꺼까지 얼마나 떨어질까, 맨뒤에 인자는 어디서 시작할까 x,y,z,r,g,b,니깐  3번쨰부터시작해서 6칸떨어져야 다음시작위치
+
+
+	glEnableVertexAttribArray(1);
+
+
 }

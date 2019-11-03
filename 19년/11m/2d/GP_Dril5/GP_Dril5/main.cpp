@@ -5,6 +5,7 @@
 #include <gl/ext.hpp>
 #include <gl/gtc/matrix_transform.hpp>
 #include <iostream>
+#include <Windows.h>
 #include "file2buf.h"
 #include "InitApp.h"
 
@@ -12,7 +13,7 @@
 #pragma comment(lib, "freeglut.lib")
 GLvoid drawScene(GLvoid);
 GLvoid Reshape(int w, int h);
-
+GLvoid delay();
 GLuint ShaderProgram;
 void main(int argc, char** argv)
 {
@@ -28,20 +29,34 @@ void main(int argc, char** argv)
 	}
 	else
 		std::cout << "GLEW Initialized\n";
-	InitBuffer();
+	CreateCube();
+	//CreateCone();
+	//InitBuffer();
 	InitProgram(ShaderProgram);
 	
 	glutDisplayFunc(drawScene);
+	glutIdleFunc(delay);
 	glutReshapeFunc(Reshape);
 	glutMainLoop();
 }
+
 GLvoid drawScene()
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(ShaderProgram);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	//glDrawArrays(GL_TRIANGLES, 0, 3);
+	static float time = 0;
+	time +=0.1f;
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::rotate(model, time, glm::vec3(0.0f, 1.0, 0.0f));
+
+	unsigned int modelLocation = glGetUniformLocation(ShaderProgram, "trans");
+
+	glUniformMatrix4fv(modelLocation, 1, GL_FALSE, glm::value_ptr(model));
+	//glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, 0);
 	glutSwapBuffers();
 	glFlush();
 
@@ -50,4 +65,10 @@ GLvoid Reshape(int w, int h)
 {
 	glViewport(0, 0, w, h);
 
+}
+
+GLvoid delay()
+{
+	Sleep(50);
+	drawScene();
 }

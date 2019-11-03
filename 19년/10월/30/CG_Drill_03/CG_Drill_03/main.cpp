@@ -58,7 +58,7 @@ int main(int argc, char** argv)
 	else
 		std::cout << "GLEW Initialized\n";
 	std::cout << sizeof(vertax) << std::endl;
-	
+
 	InitProgram1(ShaderProgrameID);
 	InitBuffer();
 	glutDisplayFunc(drawScene);
@@ -71,9 +71,10 @@ GLvoid drawScene()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glUseProgram(ShaderProgrameID);
-	
+	static float time = 0;
+	time += 0.01f;
 	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.0f));
+	model = glm::rotate(model,time, glm::vec3(0.0f, 0.f, 1.0f));
 
 	unsigned int modelLocation = glGetUniformLocation(ShaderProgrameID, "trans");
 
@@ -81,14 +82,14 @@ GLvoid drawScene()
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE, glm::value_ptr(model));
 
 	glDrawArrays(GL_TRIANGLES, 0, 3);
-
+	
 	model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(0.5f, 0.5f, 0.0f));
+	model = glm::translate(model, glm::vec3(-0.5f, -0.5f, 0.0f));
 	modelLocation = glGetUniformLocation(ShaderProgrameID, "trans");
 
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE, glm::value_ptr(model));
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_POLYGON_MODE, 0, 3);
 
 
 	glutSwapBuffers();
@@ -128,7 +129,7 @@ bool InitProgram()
 
 
 
-	
+
 
 	glGenBuffers(2, VBO); //»ı¼º
 

@@ -97,3 +97,4 @@ void InitBuffer()
 	glEnableVertexAttribArray(1);
 
 }
+
