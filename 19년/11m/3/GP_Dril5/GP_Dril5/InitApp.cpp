@@ -1,11 +1,4 @@
-#include <gl/glew.h>
-#include <gl/freeglut.h>
-#include <gl/freeglut_ext.h>
-#include <gl/glm.hpp>
-#include <gl/ext.hpp>
-#include <gl/gtc/matrix_transform.hpp>
-#include <iostream>
-#include "file2buf.h"
+
 #include "InitApp.h"
 
 bool InitProgram(unsigned int& ShaderProgram)
@@ -33,9 +26,11 @@ bool InitProgram(unsigned int& ShaderProgram)
 		return false;
 
 	}
-	return true;
 
+	
 }
+
+
 bool Check(unsigned int ShaderProgram)
 {
 	GLint state;
@@ -51,53 +46,33 @@ bool Check(unsigned int ShaderProgram)
 		}
 		return false;
 	}
-
-
 	return true;
 }
 
-void InitBuffer(GLuint& VAO)
+void InitBuffer(GLuint& VAO, GLuint& VBO)
 {
-	srand(time(NULL));
-	float r = (rand() % 255) *0.001;
-	float g = (rand() % 255)  *0.001;
-	float b = (rand() % 255)  *0.001;
-	std::cout << r << ' ' << g << ' ' << b << std::endl;
-	float size = 0.25f;
-	GLfloat vertexData[] =
-	{
-		0,size,0,	r,0,0,
-		-size,0,0,	0,g,0,
-		size,0,0,	0,0,b,
-	};
-	GLuint vertexOBJ;
-	GLuint fragmentOBJ;
-
-	//glGenBuffers(1, &vertexOBJ);
-
-	//glBindBuffer(GL_ARRAY_BUFFER, vertexOBJ);
-	//glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), &vertexData[0], GL_STATIC_DRAW);
-	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-	//glEnableVertexAttribArray(0);
-
-	//
-	//glBindBuffer(GL_ARRAY_BUFFER, fragmentOBJ);
-	//glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), &vertexData[3], GL_STATIC_DRAW);
-	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-	//glEnableVertexAttribArray(1);
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
-	glGenBuffers(1, &vertexOBJ);
-	glGenBuffers(1, &fragmentOBJ);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexOBJ);
-	glBindBuffer(GL_ARRAY_BUFFER, fragmentOBJ);  //속성 부여
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);  //데이터를 한번에 넣기
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));//3번째 인자는 다음꺼까지 얼마나 떨어질까, 맨뒤에 인자는 어디서 시작할까 x,y,z,r,g,b,니깐  3번쨰부터시작해서 6칸떨어져야 다음시작위치
 
 
-	glEnableVertexAttribArray(1);
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	float radius = 0.5;
+	std::vector<float> vertexBuffer;
+	
+	const float div_pi = (3.141592f * 2.0f)/static_cast<float>(NUMBER_OF_VERTICES);
+	float cos_x = 0.0f;
+	for (int i = 0; i < NUMBER_OF_VERTICES; ++i, cos_x += div_pi){
+	//for (float i = 0; i < 2 * 3.141592; i += (2 * 3.141592) / NUMBER_OF_VERTICES) {
+		vertexBuffer.push_back(cos(cos_x) * radius);    //X coordinate
+		vertexBuffer.push_back(sin(cos_x) * radius);    //Y coordinate
+		vertexBuffer.push_back(0.0);                //Z coordinate
+	}
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*vertexBuffer.size(), vertexBuffer.data(), GL_STATIC_DRAW);
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexBuffer.data());
+	//glEnableVertexAttribArray(0);
+	//glBindVertexArray(0);
+
 }
 
 
@@ -112,7 +87,7 @@ void CreateCone()
 		-0.5f, -0.5f, -0.5f,	0.0f, 0.5f, 1.0f,
 		0.5f, -0.5f, -0.5f,	0.5f, 0.5f, 1.0f
 	};
-
+	
 	GLuint VBO;
 	glGenBuffers(1, &VBO);
 
@@ -147,11 +122,11 @@ void CreateCone()
 
 
 }
-void CreateCube(GLuint& VAO)
+void CreateCube()
 {
 
 	GLfloat vertex[] = {
-		/*-0.5f, 0.5f, 0.5f,	1.0f, 0.0f, 0.0f,
+		-0.5f, 0.5f, 0.5f,	1.0f, 0.0f, 0.0f,
 		-0.5f, -0.5f, 0.5f,	0.5f, 0.5f, 0.0f,
 		0.5f, 0.5f, 0.5f,	0.0f, 1.0f, 0.0f,
 
@@ -160,30 +135,10 @@ void CreateCube(GLuint& VAO)
 		-0.5f, 0.5f, -0.5f,	1.0f, 0.0f, 1.0f,
 
 		0.5f, 0.5f, -0.5f,	0.0f, 0.5f, 0.0f,
-		0.5f, -0.5f, -0.5f,	1.0f, 1.0f, 0.1f*/
-
-		//윗면
-		-0.5f,0.5f,0.5f,	1.0f, 0.0f, 0.0f,  //0
-		-0.5f,0.5f,0.5f,	0.5f, 0.5f, 0.0f,  //1
-		0.5f,0.5f,0.5f,		0.0f, 1.0f, 0.0f,  //2
-
-		-0.5f,0.5f,0.5f,	1.0f, 0.0f, 0.0f,  //0
-		-0.5f,0.5f,0.5f,	0.5f, 0.5f, 0.0f,  //1
-		0.5f,0.5f,-0.5f,	0.3f, 0.5f, 0.2f,  //3
-
-		//앞면
-		-0.5f,0.5f,0.5f,	0.5f, 0.5f, 0.0f,  //1
-		-0.5f,-0.5f,-0.5f,	0.2f,0.1f,0.0f,//4
-		0.5f,-0.5f,-0.5f
-
-		
-
-
+		0.5f, -0.5f, -0.5f,	1.0f, 1.0f, 0.1f
 	};
 
 	GLuint VBO;
-	glGenBuffers(1, &VAO);
-	glBindVertexArray(VAO);
 	glGenBuffers(1, &VBO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -213,6 +168,7 @@ void CreateCube(GLuint& VAO)
 
 	GLuint EBO;
 	glGenBuffers(1, &EBO);
+
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(gIndices), &gIndices, GL_STATIC_DRAW);
 
@@ -225,3 +181,53 @@ void CreateCube(GLuint& VAO)
 
 
 }
+
+//myCicle::myCicle(GLuint ShaderProgram):radius(100) {
+//	this->coordinate = new float[30];
+//	float angle = 0.6283184;
+//	for (int i = 0; i < 30; i+=3) {
+//		coordinate[i] = radius * cos(angle);
+//		coordinate[i+1] = radius * sin(angle);
+//		coordinate[i + 2] = 0;
+//		angle += angle;
+//	}
+//	GLuint VBO;
+//	glGenBuffers(1, &VBO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(coordinate), coordinate, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+//	const char* vertexSource = filetobuf("Vertex.glsl");
+//	const char* fragmentSource = filetobuf("Fragment.glsl");
+//	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+//	glShaderSource(vertexShader, 1, &vertexSource, NULL);
+//	glCompileShader(vertexShader);
+//	Check(vertexShader);
+//
+//	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+//	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
+//	glCompileShader(fragmentShader);
+//	Check(fragmentShader);
+//
+//	ShaderProgram = glCreateProgram();
+//	glAttachShader(ShaderProgram, vertexShader);
+//	glAttachShader(ShaderProgram, fragmentShader);
+//	glLinkProgram(ShaderProgram);
+//	glDeleteShader(vertexShader);
+//	glDeleteShader(fragmentShader);
+//	if (!Check(ShaderProgram)) {
+//		glDeleteProgram(ShaderProgram);
+//
+//
+//	}
+//
+//}
+//void myCicle::InitBuffer()
+//{
+//	GLuint VBO;
+//	glGenBuffers(1, &VBO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(coordinate), coordinate, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+//
+//}
+

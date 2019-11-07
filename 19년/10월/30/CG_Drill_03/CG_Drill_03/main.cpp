@@ -85,6 +85,8 @@ GLvoid drawScene()
 	
 	model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(-0.5f, -0.5f, 0.0f));
+
+
 	modelLocation = glGetUniformLocation(ShaderProgrameID, "trans");
 
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE, glm::value_ptr(model));
