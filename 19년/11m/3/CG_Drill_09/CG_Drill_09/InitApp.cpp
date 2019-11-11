@@ -50,51 +50,31 @@ bool Check(unsigned int ShaderProgram)
 }
 
 
-void CreateCone()
+void CreateCon(GLuint& ConEBO, GLuint& ConVBO)
 {
-	GLfloat vertex[] = {
-		0.0f, 1.0f, 0.0f,	1.0f, 0.0f, 0.0f,
-		-0.5f, -0.5f, 0.5f,	0.0f, 1.0f, 0.0f,
-		0.5f, -0.5f, 0.5f,	0.0f, 0.0f, 1.0f,
-
-		-0.5f, -0.5f, -0.5f,	1.0f, 0.0f, 0.0f,
-		-0.5f, -0.5f, -0.5f,	0.0f, 0.5f, 1.0f,
-		0.5f, -0.5f, -0.5f,	0.5f, 0.5f, 1.0f
+	GLfloat vertexData[] = {
+		0.0f,0.5f,0.0f,		1.0f,1.0f,0.0f,  //0번점
+		-0.5f,-0.5f,-0.5f,	0.0f,1.0f,0.0f,  //1번점
+		-0.5f,-0.5f,0.5f,	1.0f,0.0f,0.0f,  //2번점
+		0.5f,-0.5f,0.5f,	1.0f,1.0f,0.5f,  //3번점
+		0.5f,-0.5f,-0.5f,	0.0f,0.0f,0.0f  //4번점
 	};
-	
-	GLuint VBO;
-	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &ConVBO);
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
-
-	GLint gIndices[]
-	{
-		1,3,2,
-		2,3,4,
-
-		0,1,2,
-		0,3,1,
-
-		0,3,4,
-		0,2,4,
-
+	glBindBuffer(GL_ARRAY_BUFFER, ConVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+	unsigned int indexDeta[] = {
+		2,1,3,
+		3,1,4, //밑면
+		0,2,3, //앞면
+		0,1,2,//좌측면
+		0,4,1,//뒷면
+		0,3,4,//우측면	
 	};
+	glGenBuffers(1, &ConEBO);
 
-	GLuint EBO;
-	glGenBuffers(1, &EBO);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(gIndices), &gIndices, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));//3번째 인자는 다음꺼까지 얼마나 떨어질까, 맨뒤에 인자는 어디서 시작할까 x,y,z,r,g,b,니깐  3번쨰부터시작해서 6칸떨어져야 다음시작위치
-
-
-	glEnableVertexAttribArray(1);
-
-
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ConEBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * 18, &indexDeta, GL_STATIC_DRAW);
 }
 void CreateCube(GLuint& EBO, GLuint& VBO)
 {

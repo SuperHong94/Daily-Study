@@ -16,4 +16,4 @@ bool Check(unsigned int ShaderProgram);
 
 void CreateAxis(GLuint& Axis);
 void CreateCube(GLuint& EBO, GLuint& VBO);
-void CreateCone();
+void CreateCon(GLuint& EBO, GLuint& VBO);
