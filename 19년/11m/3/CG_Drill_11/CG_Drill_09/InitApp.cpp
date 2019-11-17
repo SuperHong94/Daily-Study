@@ -27,7 +27,7 @@ bool InitProgram(unsigned int& ShaderProgram)
 
 	}
 
-
+	
 }
 
 
@@ -128,48 +128,64 @@ void CreateCube(GLuint& EBO, GLuint& VBO)
 
 void CreateAxis(GLuint& Axis)
 {
-	GLfloat AxisData[] = {
-		1.0f,0.0f,0.0f,
-		-1.0f,0.0f,0.0f,
+	float xPos = 0.0f;
 
-		0.0f,1.0f,0.0f,
-		0.0f,-1.0f,0.0f
-	};
+	std::vector<float>AxisData;
+	for (int i = 0; i < 1000; i++) {
+		AxisData.push_back(xPos);
+		AxisData.push_back(sin(xPos));
+		AxisData.push_back(0.0f);
+		xPos -= 0.1f;
+		//std::cout<<xPos<<' '<<yPos
+	}
+	xPos = 0.0f;
+	for (int i = 0; i < 1000; i++) {
+		AxisData.push_back(xPos);
+		AxisData.push_back(sin(xPos));
+		AxisData.push_back(0.0f);
+		xPos += 0.1f;
+		//std::cout<<xPos<<' '<<yPos
+	}
+	
 	glGenBuffers(1, &Axis);
 	glBindBuffer(GL_ARRAY_BUFFER, Axis);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(AxisData), &AxisData, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*AxisData.size(), AxisData.data(), GL_STATIC_DRAW);
 }
 
-GLvoid draw_cube(GLuint ShaderProgram, GLuint VBO, GLuint EBO, float x)
+void CreateSpring(GLuint& Spring)
 {
+	float xPos = 0.0f;
+	float yPos = 0.0f;
+	float tPos = 0.0f;
+	std::vector<float>AxisData;
+	for (int i = 0; i < 1000; i++) {
 
+		if (xPos < -6) {
+			xPos = 0.0f;
+			tPos -= 0.1f;
+		}
+		AxisData.push_back(tPos+cos(xPos));
+		AxisData.push_back(sin(xPos));
+		AxisData.push_back(0.0f);
+		xPos -= 0.1f;
+		//std::cout<<xPos<<' '<<yPos
+	}
+	xPos = 0.0f;
+	tPos = 0.0f;
+	for (int i = 0; i < 1000; i++) {
 
-	glm::mat4 model = glm::mat4(1.0f); //최종
-	glm::mat4 rm = glm::mat4(1.0f); //회전
+		if (xPos <6) {
+			xPos = 0.0f;
+			tPos += 0.1f;
+		}
+		AxisData.push_back(xPos);
+		AxisData.push_back(sin(xPos));
+		AxisData.push_back(0.0f);
+		xPos += 0.1f;
+		//std::cout<<xPos<<' '<<yPos
+	}
 
-	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-	rm = glm::rotate(rm, glm::radians(30.0f), glm::vec3(0.5f, 0.5f, 0));
-	rm = glm::rotate(rm, glm::radians(x), glm::vec3(0.0f, 1.0f, 0));
-	model = model * rm;
-	unsigned int modelLocation = glGetUniformLocation(ShaderProgram, "trans");
-	glUniformMatrix4fv(modelLocation, 1, GL_FALSE, glm::value_ptr(model));
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	GLuint pos_id = glGetAttribLocation(ShaderProgram, "vPos");
-	glEnableVertexAttribArray(pos_id);
-	glVertexAttribPointer(pos_id, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
-
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-	GLuint frag_id = glGetAttribLocation(ShaderProgram, "vColor");
-	glEnableVertexAttribArray(frag_id);
-	glVertexAttribPointer(frag_id, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));//3번째 인자는 다음꺼까지 얼마나 떨어질까, 맨뒤에 인자는 어디서 시작할까 x,y,z,r,g,b,니깐  3번쨰부터시작해서 6칸떨어져야 다음시작위치
-
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-	//glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-	//glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	glDisableVertexAttribArray(pos_id);
-	glDisableVertexAttribArray(frag_id);
+	glGenBuffers(1, &Spring);
+	glBindBuffer(GL_ARRAY_BUFFER, Spring);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*AxisData.size(), AxisData.data(), GL_STATIC_DRAW);
 }

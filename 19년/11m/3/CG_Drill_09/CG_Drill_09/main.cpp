@@ -28,7 +28,6 @@ bool con = false;
 bool rotate = false;
 bool lineOrFill = true;
 GLvoid draw_Axis();
-GLvoid draw_cube(float);
 GLvoid drawCon(float x);
 void Timer(int a);
 void InputKey(unsigned char key, int x, int y);
@@ -75,7 +74,8 @@ GLvoid drawScene()
 	draw_Axis();
 
 	if (cube)
-		draw_cube(angle);
+		draw_cube(ShaderProgram, VBO, EBO,angle);
+		//draw_cube(angle);
 	if (con)
 		drawCon(angle);
 
@@ -88,39 +88,7 @@ GLvoid Reshape(int w, int h)
 	glViewport(0, 0, w, h);
 
 }
-GLvoid draw_cube(float x)
-{
 
-
-	glm::mat4 model = glm::mat4(1.0f); //최종
-	glm::mat4 rm = glm::mat4(1.0f); //회전
-
-	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-	rm = glm::rotate(rm, glm::radians(30.0f), glm::vec3(0.5f, 0.5f, 0));
-	rm = glm::rotate(rm, glm::radians(x), glm::vec3(0.0f, 1.0f, 0));
-	model = model * rm;
-	unsigned int modelLocation = glGetUniformLocation(ShaderProgram, "trans");
-	glUniformMatrix4fv(modelLocation, 1, GL_FALSE, glm::value_ptr(model));
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	GLuint pos_id = glGetAttribLocation(ShaderProgram, "vPos");
-	glEnableVertexAttribArray(pos_id);
-	glVertexAttribPointer(pos_id, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
-
-	GLuint frag_id = glGetAttribLocation(ShaderProgram, "vColor");
-	glEnableVertexAttribArray(frag_id);
-	glVertexAttribPointer(frag_id, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));//3번째 인자는 다음꺼까지 얼마나 떨어질까, 맨뒤에 인자는 어디서 시작할까 x,y,z,r,g,b,니깐  3번쨰부터시작해서 6칸떨어져야 다음시작위치
-
-	if (lineOrFill)
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	else
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-
-	glDisableVertexAttribArray(pos_id);
-	glDisableVertexAttribArray(frag_id);
-}
 
 GLvoid draw_Axis()
 {
