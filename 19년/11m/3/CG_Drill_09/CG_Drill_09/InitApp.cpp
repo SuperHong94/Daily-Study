@@ -146,10 +146,12 @@ GLvoid draw_cube(GLuint ShaderProgram, GLuint VBO, GLuint EBO, float x)
 
 	glm::mat4 model = glm::mat4(1.0f); //최종
 	glm::mat4 rm = glm::mat4(1.0f); //회전
+	glm::mat4 tm = glm::mat4(1.0f); //회전
 
 	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 	rm = glm::rotate(rm, glm::radians(30.0f), glm::vec3(0.5f, 0.5f, 0));
 	rm = glm::rotate(rm, glm::radians(x), glm::vec3(0.0f, 1.0f, 0));
+	tm = glm::translate(tm, glm::vec3(0.5f, 0.0f, 0.0f));
 	model = model * rm;
 	unsigned int modelLocation = glGetUniformLocation(ShaderProgram, "trans");
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE, glm::value_ptr(model));
