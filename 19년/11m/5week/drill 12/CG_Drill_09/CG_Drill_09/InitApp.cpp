@@ -140,38 +140,26 @@ void CreateAxis(GLuint& Axis)
 	glBufferData(GL_ARRAY_BUFFER, sizeof(AxisData), &AxisData, GL_STATIC_DRAW);
 }
 
-GLvoid draw_cube(GLuint ShaderProgram, GLuint VBO, GLuint EBO, float x)
+
+
+void view(GLuint ShaderProgram)
 {
-
-
-	glm::mat4 model = glm::mat4(1.0f); //최종
-	glm::mat4 rm = glm::mat4(1.0f); //회전
-	glm::mat4 tm = glm::mat4(1.0f); //회전
-
-	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-	rm = glm::rotate(rm, glm::radians(30.0f), glm::vec3(0.5f, 0.5f, 0));
-	rm = glm::rotate(rm, glm::radians(x), glm::vec3(0.0f, 1.0f, 0));
-	tm = glm::translate(tm, glm::vec3(0.5f, 0.0f, 0.0f));
-	model = model * rm;
-	unsigned int modelLocation = glGetUniformLocation(ShaderProgram, "trans");
-	glUniformMatrix4fv(modelLocation, 1, GL_FALSE, glm::value_ptr(model));
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	GLuint pos_id = glGetAttribLocation(ShaderProgram, "vPos");
-	glEnableVertexAttribArray(pos_id);
-	glVertexAttribPointer(pos_id, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
-
-	//glDrawArrays(GL_TRIANGLES, 0, 36);
-	GLuint frag_id = glGetAttribLocation(ShaderProgram, "vColor");
-	glEnableVertexAttribArray(frag_id);
-	glVertexAttribPointer(frag_id, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));//3번째 인자는 다음꺼까지 얼마나 떨어질까, 맨뒤에 인자는 어디서 시작할까 x,y,z,r,g,b,니깐  3번쨰부터시작해서 6칸떨어져야 다음시작위치
-
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-	//glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	glDisableVertexAttribArray(pos_id);
-	glDisableVertexAttribArray(frag_id);
+	static float t = 0.0f;
+	t += 0.01f;
+	glm::vec3 cameraPos = glm::vec3(0.0f, 1.0f, 5.0f);
+	glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f,0.0f);
+	glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+	glm::mat4 view = glm::mat4(1.0f);
+	view = glm::lookAt(cameraPos, cameraDirection, cameraUp);
+	unsigned int viewLocation = glGetUniformLocation(ShaderProgram, "viewTransform");
+	glUniformMatrix4fv(viewLocation, 1, GL_FALSE, &view[0][0]);
 }
+void Myprojection(GLuint ShaderProgram) {
+	glm::mat4 projection = glm::mat4(1.0f);
+	projection = glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 1000.0f);
+	unsigned int projectionLocation = glGetUniformLocation(ShaderProgram, "projectionTransform");
+	glUniformMatrix4fv(projectionLocation, 1, GL_FALSE, &projection[0][0]);
+}
+
+
+
