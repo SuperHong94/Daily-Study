@@ -5,7 +5,7 @@ Node* NewNode(int data)
 {
 	Node* node = new Node;
 	node->data = data;
-	node->left = node->right = nullptr;
+	node->left = node->right = NIL;
 	node->color = RED;
 	return node;
 }
@@ -15,37 +15,38 @@ void printColor(int d) {
 	else
 		std::cout << "빨강";
 }
-Node* Insert(Node* node, int data)
+void Insert(Node*& node, int data)
 {
-	if (node == nullptr) {// 트리의 마지막
-		node=NewNode(data);
-		return node;
+	if (node == NIL || node == nullptr) {// 트리의 마지막
+		node = NewNode(data);
 	}
 	else {
 		if (data < node->data) {
+			if (node == NIL)
+				return;
 			Node* parent = node;
-			Node* newNode = nullptr;
-			newNode = Insert(node->left, data);
-			node->left = newNode;
+
+			Insert(node->left, data);
 			node->left->parents = parent;
-			if (node->left->left == nullptr&&node->left->right == nullptr)  //끝노드일때 체크한다.
-				CheckTree(node->left);
+			if (node->left->left == NIL && node->left->right == NIL)  //끝노드일때 체크한다.
+				CheckTree(node);
 		}
 		else {
+			if (node == NIL)
+				return;
 			Node* parent = node;
-			Node* newNode = nullptr;
-			newNode = Insert(node->right, data);
-			node->right = newNode;
+
+			Insert(node->right, data);
 			node->right->parents = parent;
-			if (node->right->left == nullptr&&node->right->right == nullptr)  //끝노드일때 체크한다.
-				CheckTree(node->right);
+			if (node->right->left == NIL && node->right->right == NIL)  //끝노드일때 체크한다.
+				CheckTree(node);
 		}
 	}
 }
 
 void PrintAll(Node* ROOT)
 {
-	if (ROOT == nullptr)
+	if (ROOT == NIL)
 		return;
 	else {
 		std::cout << "본인주소" << ROOT << " 부모주소:" << ROOT->parents << " 본인 data:" << ROOT->data << " 색깔:";
@@ -62,15 +63,17 @@ void CheckTree(Node* node)
 			node->color = BLACK;
 			return;
 		}
-		return;
+		else
+			return;
 	}
 	if (node->parents->color == BLACK)
 		return;
 	else {  //부모가 레드
 		Node* uncle = GetSibling(node->parents);
 
-		if (uncle == nullptr || uncle->color == BLACK) {
+		if (uncle->color == BLACK) {//여기 엉클 null수정
 			case2_1(node);
+			return;
 		}
 		else if (uncle->color == RED) {
 			node->parents->color = BLACK;
@@ -92,4 +95,120 @@ Node* GetSibling(Node* node)
 		else
 			return node->parents->right;
 	}
+}
+
+
+void leftRotate(Node*node)
+{
+	std::cout << "왼쪽회전" << std::endl;
+	Node*Parent = node->parents;
+	Parent->right = node->left;
+	node->left = Parent;
+	node->parents = Parent->parents;
+
+	if (Parent->parents != nullptr) {
+		if (Parent == Parent->parents->left) {		// 부모노드가 그 부모노드의 왼쪽이면
+			Parent->parents->left = node;
+		}
+		else {
+			Parent->parents->right = node;
+		}
+	}
+	else {					// node 가 루트노드가 됨
+		ROOT = node;
+	}
+
+	Parent->parents = node;
+	Parent->right->parents = Parent;
+}
+void rightRotate(Node*node)
+{
+	std::cout << "오른쪽회전" << std::endl;
+	Node*Parent = node->parents;
+	Parent->left = node->right;
+	node->right = Parent;
+	node->parents = Parent->parents;
+
+	if (Parent->parents != nullptr) {
+		if (Parent == Parent->parents->left) {
+			Parent->parents->left = node;
+		}
+		else {
+			Parent->parents->right = node;
+		}
+	}
+	else {
+		ROOT = node;
+	}
+
+	Parent->parents = node;
+	Parent->left->parents = Parent;
+}
+void rightRotate1(Node*node)
+{
+	std::cout << "오른쪽회전" << std::endl;
+	Node* gp = node->parents->parents;
+	Node*Parent = node->parents;
+	Parent->left = node->right;
+	node->right = Parent;
+	node->parents = Parent->parents;
+
+	if (Parent->parents != nullptr) {
+		if (Parent == Parent->parents->left) {
+			Parent->parents->left = node;
+		}
+		else {
+			Parent->parents->right = node;
+		}
+	}
+	else {
+		ROOT = node;
+	}
+
+	Parent->parents = node;
+	Parent->left->parents = Parent;
+}
+
+void case2_1(Node* node)
+{
+	Node*Parent = node->parents;
+	if (Parent->parents->right->color == BLACK) {
+		if (node == Parent->right) {
+			std::cout << "회전전 node" << node << '\n';
+			leftRotate(node);
+			std::cout << "회전후 node" << node << '\n';
+			rightRotate(node);
+			node->color = BLACK;
+			node->right->color = RED;
+			CheckTree(node);
+		}
+
+		else if (node == Parent->left) {
+			rightRotate(Parent);
+			Parent->color = BLACK;
+			node;
+			node->left;
+			Parent->right->color = RED;
+			CheckTree(Parent);
+		}
+	}
+
+	else if (Parent->parents->left->color == BLACK) {
+
+		if (node == Parent->right) {
+			rightRotate(Parent);
+			Parent->color = BLACK;
+			Parent->left->color = RED;
+			CheckTree(node);
+		}
+
+		else if (node == Parent->left) {
+			leftRotate(node);
+			rightRotate(node);
+			node->color = BLACK;
+			node->left->color = RED;
+			CheckTree(Parent);
+		}
+	}
+
 }
