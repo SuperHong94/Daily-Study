@@ -50,10 +50,11 @@ void main(int argc, char** argv)
 		std::cout << "GLEW Initialized\n";
 	glEnable(GL_CULL_FACE);
 	CreateAxis(Axis);
-	CreateCon(ConEBO, ConVBO);
-	CreateCube(EBO, VBO);
-
 	InitProgram(ShaderProgram);
+	CreateCon(ConEBO, ConVBO);
+	CreateCube(ShaderProgram,EBO, VBO);
+
+
 	glutDisplayFunc(drawScene);
 	glutKeyboardFunc(InputKey);
 	glutTimerFunc(10, Timer, 1);

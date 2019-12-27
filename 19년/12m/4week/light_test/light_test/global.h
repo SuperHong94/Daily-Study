@@ -1,0 +1,14 @@
+#pragma once
+#include <gl/glew.h>
+#include <gl/freeglut.h>
+#include <gl/freeglut_ext.h>
+#include <gl/glm.hpp>
+#include <gl/ext.hpp>
+#include <gl/gtc/matrix_transform.hpp>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cmath>
+#include <Windows.h>
+#include <stdio.h>
+#include "Rectangle.h"

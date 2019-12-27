@@ -15,7 +15,7 @@ bool InitProgram(unsigned int& ShaderProgram);
 bool Check(unsigned int ShaderProgram);
 
 void CreateAxis(GLuint& Axis);
-void CreateCube(GLuint& EBO, GLuint& VBO);
+void CreateCube(GLuint ShaderProgram, GLuint& EBO, GLuint& VBO);
 void CreateCon(GLuint& EBO, GLuint& VBO);
 GLvoid draw_cube(GLuint ShaderProgram, GLuint VBO, GLuint EBO, float x);
 void view(GLuint shaderProgram);

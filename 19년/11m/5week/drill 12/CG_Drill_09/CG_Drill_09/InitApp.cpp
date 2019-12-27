@@ -76,7 +76,7 @@ void CreateCon(GLuint& ConEBO, GLuint& ConVBO)
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ConEBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * 18, &indexDeta, GL_STATIC_DRAW);
 }
-void CreateCube(GLuint& EBO, GLuint& VBO)
+void CreateCube(GLuint ShaderProgram,GLuint& EBO, GLuint& VBO)
 {
 
 	GLfloat vertex[] = {
@@ -94,6 +94,7 @@ void CreateCube(GLuint& EBO, GLuint& VBO)
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
+
 
 	//front
 	GLint gIndices[]
@@ -121,6 +122,9 @@ void CreateCube(GLuint& EBO, GLuint& VBO)
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(gIndices), &gIndices, GL_STATIC_DRAW);
+
+
+
 
 
 
