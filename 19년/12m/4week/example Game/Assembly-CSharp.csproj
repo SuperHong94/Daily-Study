@@ -60,8 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\ItemCan.cs" />
-    <Compile Include="Assets\Script\PlayerBall.cs" />
+    <Compile Include="Assets\PlayerBall.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/홍순조/source/repos/Daily-Study/19년/12m/4week/example Game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
