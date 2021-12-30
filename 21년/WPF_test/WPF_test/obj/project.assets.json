@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SuperHong\\source\\repos\\WPF_test\\WPF_test\\WPF_test.csproj",
+      "projectUniqueName": "C:\\Users\\SuperHong\\Documents\\GitHub\\Daily-Study\\21년\\WPF_test\\WPF_test\\WPF_test.csproj",
       "projectName": "WPF_test",
-      "projectPath": "C:\\Users\\SuperHong\\source\\repos\\WPF_test\\WPF_test\\WPF_test.csproj",
+      "projectPath": "C:\\Users\\SuperHong\\Documents\\GitHub\\Daily-Study\\21년\\WPF_test\\WPF_test\\WPF_test.csproj",
       "packagesPath": "C:\\Users\\SuperHong\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SuperHong\\source\\repos\\WPF_test\\WPF_test\\obj\\",
+      "outputPath": "C:\\Users\\SuperHong\\Documents\\GitHub\\Daily-Study\\21년\\WPF_test\\WPF_test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\SuperHong\\AppData\\Roaming\\NuGet\\NuGet.Config",
