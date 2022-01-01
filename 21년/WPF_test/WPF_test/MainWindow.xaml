@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:WPF_test"
         mc:Ignorable="d"
         Title="MainWindow" Height="180" Width="260">
-    <Grid Margin="10">
+    <Grid Margin="10" RowDefinition.Height="*" ColumnDefinition.Width="*">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
@@ -20,7 +20,7 @@
         
         <Label>Names</Label>
         
-        <ListBox Grid.Row="1" x:Name="lstNames"/>
+        <ListBox Grid.Row="10" x:Name="lstNames" Background="#FFC51717"/>
 
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
