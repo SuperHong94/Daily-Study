@@ -1,0 +1,15 @@
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\bin\Debug\VSIXAnatomy.dll
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\bin\Debug\VSIXAnatomy.pdb
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\bin\Debug\VSIXAnatomy.pkgdef
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\bin\Debug\VSIXAnatomy.vsix
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\bin\Debug\extension.vsixmanifest
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\_EmptyResource.resources
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\VSIXAnatomy.csproj.GenerateResource.cache
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\VSIXAnatomy.csproj.CoreCompileInputs.cache
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\VSIXAnatomy.dll
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\VSIXAnatomy.pdb
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\VSIXAnatomy.pkgdef
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\VSIXAnatomy.latest.pkgdef
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\extension.vsixmanifest
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\files.json
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\VSIX\VSIXAnatomy\VSIXAnatomy\obj\Debug\createTemplateManifests.cache
