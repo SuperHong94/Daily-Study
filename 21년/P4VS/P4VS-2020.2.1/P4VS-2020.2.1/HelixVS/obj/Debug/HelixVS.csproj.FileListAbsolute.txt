@@ -1,0 +1,4 @@
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\HelixVS\obj\Debug\HelixVS.csproj.AssemblyReference.cache
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\HelixVS\obj\Debug\_EmptyResource.resources
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\HelixVS\obj\Debug\HelixVS.csproj.GenerateResource.cache
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\HelixVS\obj\Debug\HelixVS.csproj.CoreCompileInputs.cache

@@ -1,0 +1,6 @@
+bin\Debug\\P4VS_StartPage.dll
+bin\Debug\\P4VS_StartPage.pdb
+bin\Debug\\P4VS_StartPage.pkgdef
+bin\Debug\\HelixMoniker.imagemanifest
+bin\Debug\\createTemplateManifests.cache
+bin\Debug\\extension.vsixmanifest

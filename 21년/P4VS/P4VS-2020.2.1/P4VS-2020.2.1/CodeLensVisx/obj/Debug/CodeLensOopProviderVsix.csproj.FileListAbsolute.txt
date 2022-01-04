@@ -1,0 +1,14 @@
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\CodeLensOopProviderVsix.csproj.AssemblyReference.cache
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\Resources\submitted.baml
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\HelixCodeLensOopProviderVsix_MarkupCompile.cache
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\HelixCodeLensOopProviderVsix.g.resources
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\VSPackage.resources
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\CodeLensOopProviderVsix.csproj.GenerateResource.cache
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\CodeLensOopProviderPackage.cto
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\VSCT.read.1.tlog
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\VSCT.write.1.tlog
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\resources.json
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\ctoFiles.json
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\VSPackage.resources.original
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\mergeCto.cache
+C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\P4VS\P4VS-2020.2.1\P4VS-2020.2.1\CodeLensVisx\obj\Debug\CodeLensOopProviderVsix.csproj.CoreCompileInputs.cache
