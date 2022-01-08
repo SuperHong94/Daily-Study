@@ -6,11 +6,11 @@ using namespace System::Runtime::CompilerServices;
 using namespace System::Runtime::InteropServices;
 using namespace System::Security::Permissions;
 
-[assembly:AssemblyTitleAttribute(L"HttpDownloader")];
+[assembly:AssemblyTitleAttribute(L"HttpDownloaderCLR")];
 [assembly:AssemblyDescriptionAttribute(L"")];
 [assembly:AssemblyConfigurationAttribute(L"")];
 [assembly:AssemblyCompanyAttribute(L"")];
-[assembly:AssemblyProductAttribute(L"HttpDownloader")];
+[assembly:AssemblyProductAttribute(L"HttpDownloaderCLR")];
 [assembly:AssemblyCopyrightAttribute(L"Copyright (C)  2022")];
 [assembly:AssemblyTrademarkAttribute(L"")];
 [assembly:AssemblyCultureAttribute(L"")];

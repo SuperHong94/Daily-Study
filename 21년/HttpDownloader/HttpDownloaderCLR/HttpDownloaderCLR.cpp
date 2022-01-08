@@ -1,6 +1,6 @@
 ﻿#include "pch.h"
 
-#include "HttpDownloader.h"
+#include "HttpDownloaderCLR.h"
 
 HttpDownloader::FileDownloader::FileDownloader()
 {

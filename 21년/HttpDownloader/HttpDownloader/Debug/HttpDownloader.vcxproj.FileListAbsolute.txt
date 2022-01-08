@@ -1,5 +1,0 @@
-C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\HttpDownloader\Debug\Ijwhost.dll
-C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\HttpDownloader\Debug\HttpDownloader.deps.json
-C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\HttpDownloader\Debug\HttpDownloader.runtimeconfig.json
-C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\HttpDownloader\HttpDownloader\Debug\HttpDownloader.vcxproj.AssemblyReference.cache
-C:\Users\SuperHong\Documents\GitHub\Daily-Study\21년\HttpDownloader\HttpDownloader\Debug\HttpDownloader.genruntimeconfig.cache
