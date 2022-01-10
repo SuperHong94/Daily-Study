@@ -12,12 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HttpDownloader;
+using System.Runtime.InteropServices;
+using 
 namespace HttpDownloaderApp
 {
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
+    /// 
+
+    [DllImport("HttpDownloader_lib.dll",CallingConvention=CallingConvention.Cdecl)]
+    public static static  void CFileDownloader* CreateFileDownloader(const std::wstring& url, const std::wstring& save_path, const std::wstring& file_name)
     public partial class MainWindow : Window
     {
         public MainWindow()
