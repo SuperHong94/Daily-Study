@@ -10,10 +10,8 @@ CUnzipMgr::CUnzipMgr(int threadNum)
 
 	_hIocp = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, NULL, threadNum);
 
-	std::thread CUnzipMgrThread{ &CUnzipMgr::RunThread ,this,threadNum };
 
-
-	CUnzipMgrThread.join();
+	RunThread(threadNum);
 
 
 
@@ -21,6 +19,8 @@ CUnzipMgr::CUnzipMgr(int threadNum)
 
 CUnzipMgr::~CUnzipMgr()
 {
+	for (auto& th : _workers)
+		th.join();
 }
 
 
@@ -34,8 +34,7 @@ void CUnzipMgr::RunThread(int threadNum)
 	}
 
 
-	for (auto& th : _workers)
-		th.join();
+
 }
 
 void CUnzipMgr::Worker()
