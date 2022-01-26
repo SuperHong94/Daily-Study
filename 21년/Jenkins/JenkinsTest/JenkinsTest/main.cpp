@@ -10,7 +10,7 @@ int main()
 	char s[] = "if buildOk Test";
 
 	ofstream out{ "test.txt" };
-	if (!out)
+	if (!out)asdf
 		return 0;
 	out.write(s, sizeof(s));
 	out.close();
