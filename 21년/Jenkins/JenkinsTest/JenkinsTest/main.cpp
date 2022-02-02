@@ -15,5 +15,5 @@ int main()
 	out.write(s, sizeof(s));
 	out.close();
 
-	std::cout << "Jenkins build Test!\n";
+	std::cout << "build test Jenkins build Test!\n";
 }
