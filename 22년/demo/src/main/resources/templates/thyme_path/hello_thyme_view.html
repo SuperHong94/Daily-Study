@@ -1,0 +1,15 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+    <head>'
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Insert title here</title>
+        <body>
+            <h2>thymeleaf Test: <span th:text="${KEY_SUBJECT}"/></h2>
+            <hr>
+            <table>
+                <tr th:each="myvar:${KEY_SUBJECT}">
+                    <td th:text="${myvar}"></td>
+                </tr>
+            </table>
+        </body>
+    </head>
+</html>
